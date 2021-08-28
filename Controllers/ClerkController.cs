@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace biblioteca_AspNetWebApi.Controllers
 {
-    public class ClerkController
+    public class ClerkController : ControllerBase
     {
         
     }
