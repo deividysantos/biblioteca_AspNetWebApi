@@ -14,21 +14,21 @@ namespace biblioteca_AspNetWebApi.Services
             _clientRepository = clientRepository;
         }
 
-        public async Task<bool> Add(Client cliente)
+        public async Task<bool> AddAsync(Client cliente)
         {
             if(await _clientRepository.CreateAsync(cliente)) return true;
 
             return false;
         }
 
-        public async Task<bool> Update(Client client, int id)
+        public async Task<bool> UpdateAsync(Client client, int id)
         {
             if(await _clientRepository.UpdateAsync(client, id)) return true;
 
             return false;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             if(await _clientRepository.DeleteAsync(id)) return true;
 
