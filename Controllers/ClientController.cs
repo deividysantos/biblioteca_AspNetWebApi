@@ -29,7 +29,7 @@ namespace biblioteca_AspNetWebApi.Controllers
             
             client.IsInactivated = false;
 
-            if(await _clientService.Add(client)) return Ok();
+            if(await _clientService.AddAsync(client)) return Ok();
             
             return BadRequest();
         }
@@ -41,7 +41,7 @@ namespace biblioteca_AspNetWebApi.Controllers
 
             Client client = _mapper.Map<Client>(clientViewModel);
 
-            if(await _clientService.Update(client, id)) return Ok();
+            if(await _clientService.UpdateAsync(client, id)) return Ok();
 
             return BadRequest();
         }
@@ -51,7 +51,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            if(await _clientService.Delete(id)) return Ok();
+            if(await _clientService.DeleteAsync(id)) return Ok();
 
             return BadRequest();
         }

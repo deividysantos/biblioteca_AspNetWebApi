@@ -9,7 +9,7 @@ namespace biblioteca_AspNetWebApi.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        private readonly BibliotecaContext _context;
+        protected readonly BibliotecaContext _context;
 
         public BaseRepository(BibliotecaContext context)
         {
