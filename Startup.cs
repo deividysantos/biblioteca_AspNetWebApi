@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using biblioteca_AspNetWebApi.Mapper;
+using biblioteca_AspNetWebApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace biblioteca_AspNetWebApi
 {
@@ -27,11 +24,23 @@ namespace biblioteca_AspNetWebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
+            var mappingConfig = new MapperConfiguration(
+                mapperConfiguration => 
+                mapperConfiguration.AddProfile(new Mapping())
+            );
+
+            IMapper mapper = mappingConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "biblioteca_AspNetWebApi", Version = "v1" });
             });
+
+            services.AddDbContext<BibliotecaContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("biblioteca")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
