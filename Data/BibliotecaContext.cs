@@ -11,5 +11,6 @@ namespace biblioteca_AspNetWebApi.Data
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<Clerk> Clerks { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }

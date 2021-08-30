@@ -8,6 +8,8 @@ using AutoMapper;
 using biblioteca_AspNetWebApi.Mapper;
 using biblioteca_AspNetWebApi.Data;
 using Microsoft.EntityFrameworkCore;
+using biblioteca_AspNetWebApi.Services;
+using biblioteca_AspNetWebApi.Repository;
 
 namespace biblioteca_AspNetWebApi
 {
@@ -41,6 +43,14 @@ namespace biblioteca_AspNetWebApi
 
             services.AddDbContext<BibliotecaContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("biblioteca")));
+
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            services.AddTransient<BookService>();
+            services.AddTransient<ClerkService>();
+            services.AddTransient<ClientService>();
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
