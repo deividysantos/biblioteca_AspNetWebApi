@@ -14,6 +14,13 @@ namespace biblioteca_AspNetWebApi.Services
             _clientRepository = clientRepository;
         }
 
+        public async Task<Client> GetById(int id)
+        {
+            var client = await _clientRepository.GetByIdAsync(id);
+
+            return client;
+        }
+
         public async Task<bool> AddAsync(Client cliente)
         {
             if(await _clientRepository.CreateAsync(cliente)) return true;
@@ -33,6 +40,15 @@ namespace biblioteca_AspNetWebApi.Services
             if(await _clientRepository.DeleteAsync(id)) return true;
 
             return false;
+        }
+
+        public async Task<bool> ExistingEmailAsync(string email) 
+        {
+            Client client = await _clientRepository.GetByEmailAsync(email);
+
+            if(client.Email is null) return false;
+
+            return true;
         }
     }
 }

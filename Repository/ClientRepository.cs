@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Data;
 using biblioteca_AspNetWebApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace biblioteca_AspNetWebApi.Repository
 {
@@ -7,6 +9,15 @@ namespace biblioteca_AspNetWebApi.Repository
     {
         public ClientRepository(BibliotecaContext context) : base(context)
         {
+        }
+
+        public async Task<Client> GetByEmailAsync(string email)
+        {
+            Client client = await _context.Clients.FirstOrDefaultAsync(x => x.Email == email);
+
+            if(client.Email == email) return client;
+
+            return null;
         }
     }
 }
