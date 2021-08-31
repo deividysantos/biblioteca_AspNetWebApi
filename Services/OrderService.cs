@@ -9,6 +9,8 @@ namespace biblioteca_AspNetWebApi.Services
     public class OrderService
     {
         private readonly OrderRepository _orderRepository;
+        private readonly ClientRepository _clientRepository;
+        private readonly PunishmentRepository _punishmentRepository;
 
         public OrderService(OrderRepository orderRepository)
         {
@@ -37,6 +39,31 @@ namespace biblioteca_AspNetWebApi.Services
         public IEnumerable<Order> GetAllByIdClient(int id)
         {
             return _orderRepository.GetAllByIdClient(id);
+        }
+
+        public bool FitClient(int id)
+        {
+            var punishments =  _punishmentRepository.GetAllByClientId(id);
+            var orders = _orderRepository.GetAllByIdClient(id);
+
+            bool havePunishment = false;
+            int quantityBooksRequest = 0;
+
+            foreach (var item in punishments)
+            {
+                if(item.InitialDate.AddDays(7) > DateTime.Now) 
+                    havePunishment = true;
+            }
+
+            foreach (var item in orders)
+            {
+                if(item.DeliveryDate == DateTime.UnixEpoch)
+                    quantityBooksRequest += 1;
+            }
+
+            if(havePunishment == false && quantityBooksRequest <= 1) return true;
+
+            return false;
         }
     }
 }

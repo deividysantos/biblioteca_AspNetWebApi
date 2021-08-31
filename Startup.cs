@@ -49,6 +49,8 @@ namespace biblioteca_AspNetWebApi
             services.AddTransient<BookService>();
             services.AddTransient<ClerkService>();
             services.AddTransient<ClientService>();
+            services.AddTransient<OrderService>();
+            services.AddTransient<PunishmentService>();
 
             services.AddControllers();
         }

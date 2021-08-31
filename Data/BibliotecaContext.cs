@@ -13,5 +13,6 @@ namespace biblioteca_AspNetWebApi.Data
         public DbSet<Clerk> Clerks { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Punishment> Punishments { get; set; }
     }
 }
