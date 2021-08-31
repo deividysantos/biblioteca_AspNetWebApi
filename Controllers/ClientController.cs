@@ -38,9 +38,17 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody]ClientViewModel clientViewModel, [FromQuery] int id)
+        public async Task<IActionResult> Update([FromBody]ClientViewModel clientViewModel, [FromQuery]int id)
         {
             if(!ModelState.IsValid) return BadRequest();
+
+            var oldClient = await _clientService.GetById(id);
+
+            if(oldClient.Email != clientViewModel.Email) 
+            {
+                if(await _clientService.ExistingEmailAsync(clientViewModel.Email))
+                    return BadRequest("Email já cadastrado!");
+            }
 
             Client client = _mapper.Map<Client>(clientViewModel);
 
@@ -50,7 +58,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpDelete("Deletar/{id}")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromQuery]int id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
