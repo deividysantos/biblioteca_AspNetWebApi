@@ -34,5 +34,14 @@ namespace biblioteca_AspNetWebApi.Services
 
             return false;
         }
+
+        public async Task<bool> ExistingEmailAsync(string email) 
+        {
+            Client client = await _clientRepository.GetByEmailAsync(email);
+
+            if(client.Email is null) return false;
+
+            return true;
+        }
     }
 }

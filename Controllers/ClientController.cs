@@ -25,6 +25,9 @@ namespace biblioteca_AspNetWebApi.Controllers
         {
             if(!ModelState.IsValid) return BadRequest();
 
+            if(await _clientService.ExistingEmailAsync(clientViewModel.Email))
+                return BadRequest("Email já cadastrado!");
+
             Client client = _mapper.Map<Client>(clientViewModel);
             
             client.IsInactivated = false;
