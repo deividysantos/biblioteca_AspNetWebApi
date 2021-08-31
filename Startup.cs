@@ -45,6 +45,11 @@ namespace biblioteca_AspNetWebApi
             options.UseSqlServer(Configuration.GetConnectionString("biblioteca")));
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<BookRepository>();
+            services.AddScoped<ClerkRepository>();
+            services.AddScoped<ClientRepository>();
+            services.AddScoped<OrderRepository>();
+            services.AddScoped<PunishmentRepository>();
 
             services.AddTransient<BookService>();
             services.AddTransient<ClerkService>();
