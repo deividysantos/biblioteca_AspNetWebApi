@@ -12,6 +12,7 @@ namespace biblioteca_AspNetWebApi.Mapper
             CreateMap<ClerkViewModel, Clerk>();
             CreateMap<BookViewModel, Book>();
             CreateMap<PunishmentViewModel, Punishment>();
+            CreateMap<OrderViewModel, Order>();
         }
     }
 }
