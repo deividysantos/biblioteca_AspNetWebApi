@@ -15,6 +15,8 @@ namespace biblioteca_AspNetWebApi.Repository
         {
             Client client = await _context.Clients.FirstOrDefaultAsync(x => x.Email == email);
 
+            if(client is null) return null;
+            
             if(client.Email == email) return client;
 
             return null;

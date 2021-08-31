@@ -36,19 +36,19 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody] ClerkViewModel clerkViewModel, [FromQuery] int id)
+        public async Task<IActionResult> Update([FromBody] ClerkViewModel clerkViewModel, [FromRoute]int id)
         {
-            if(!ModelState.IsValid) return BadRequest();
+            if(!ModelState.IsValid) return BadRequest("aiaiai");
 
             Clerk clerk = _mapper.Map<Clerk>(clerkViewModel);
 
             if(await _clerkService.UpdateAsync(clerk, id)) return Ok();
 
-            return BadRequest();
+            return BadRequest("aaaa");
         }
 
         [HttpDelete("Deletar/{id}")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             if(!ModelState.IsValid) return BadRequest();
 

@@ -12,10 +12,13 @@ namespace biblioteca_AspNetWebApi.Services
         private readonly ClientRepository _clientRepository;
         private readonly PunishmentRepository _punishmentRepository;
 
-        public OrderService(OrderRepository orderRepository)
+        public OrderService(OrderRepository orderRepository, ClientRepository clientRepository, PunishmentRepository punishmentRepository)
         {
             _orderRepository = orderRepository;
+            _clientRepository = clientRepository;
+            _punishmentRepository = punishmentRepository;
         }
+
         public async Task<Order> GetByIdAsync(int id)
         {
             return await _orderRepository.GetByIdAsync(id);

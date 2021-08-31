@@ -46,7 +46,7 @@ namespace biblioteca_AspNetWebApi.Services
         {
             Client client = await _clientRepository.GetByEmailAsync(email);
 
-            if(client.Email is null) return false;
+            if(client is null) return false;
 
             return true;
         }

@@ -16,6 +16,8 @@ namespace biblioteca_AspNetWebApi.Repository
         {
             Clerk clerk = await _context.Clerks.FirstOrDefaultAsync(x => x.Email == email);
 
+            if(clerk is null) return null;
+
             if(clerk.Email == email) return clerk;
 
             return null;

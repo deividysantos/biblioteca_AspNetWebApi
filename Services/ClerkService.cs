@@ -39,7 +39,7 @@ namespace biblioteca_AspNetWebApi.Services
         {
             Clerk clerk = await _clerkRepository.GetByEmailAsync(email);
 
-            if(clerk.Email is null) return false;
+            if(clerk is null) return false;
 
             return true;
         }

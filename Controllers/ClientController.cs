@@ -38,7 +38,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody]ClientViewModel clientViewModel, [FromQuery]int id)
+        public async Task<IActionResult> Update([FromBody]ClientViewModel clientViewModel, [FromRoute]int id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
@@ -58,7 +58,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpDelete("Deletar/{id}")]
-        public async Task<IActionResult> Delete([FromQuery]int id)
+        public async Task<IActionResult> Delete([FromRoute]int id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
