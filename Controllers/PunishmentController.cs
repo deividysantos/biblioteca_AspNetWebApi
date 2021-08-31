@@ -16,7 +16,5 @@ namespace biblioteca_AspNetWebApi.Controllers
             _punishmentService = punishmentService;
             _mapper = mapper;
         }
-
-        
     }
 }

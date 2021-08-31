@@ -45,6 +45,9 @@ namespace biblioteca_AspNetWebApi.Controllers
         {
             if(!ModelState.IsValid) return BadRequest();
 
+            if(!_orderService.FitClient(orderViewModel.IdClient))
+                return BadRequest("Cliente não está adpto para retirar um novo livro, verifique as pendências"); 
+
             var order = _mapper.Map<Order>(orderViewModel);
 
             if(await _orderService.Add(order)) return Ok();
