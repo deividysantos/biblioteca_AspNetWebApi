@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Models;
 using biblioteca_AspNetWebApi.Models.ViewModels;
@@ -29,12 +30,12 @@ namespace biblioteca_AspNetWebApi.Services
         {
             return await _bookrepository.CreateAsync(book);
         }
-        public async Task<bool> Update(Book book, int id)
+        public async Task<bool> Update(Book book, Guid id)
         {
             return await _bookrepository.UpdateAsync(book, id);
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(Guid id)
         {
             return await _bookrepository.DeleteAsync(id);
         }

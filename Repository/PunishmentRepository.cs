@@ -14,7 +14,7 @@ namespace biblioteca_AspNetWebApi.Repository
         {
         }
 
-        public IEnumerable<Punishment> GetAllByClientId(int id)
+        public IEnumerable<Punishment> GetAllByClientId(Guid id)
         {
             var entities = _context.Punishments.Where(x => x.IdClient == id);
 

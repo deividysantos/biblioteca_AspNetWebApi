@@ -14,7 +14,7 @@ namespace biblioteca_AspNetWebApi.Repository
         {
         }
 
-        public IEnumerable<Order> GetAllByIdClient(int id)
+        public IEnumerable<Order> GetAllByIdClient(Guid id)
         {
             var entities = _context.Orders.Where(x => x.IdClient == id);
 

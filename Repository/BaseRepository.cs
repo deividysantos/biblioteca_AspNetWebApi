@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,12 +29,12 @@ namespace biblioteca_AspNetWebApi.Repository
             return await _context.Set<T>().AsNoTracking().OrderBy(x => x.Id).ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<bool> UpdateAsync(T entity, int id)
+        public async Task<bool> UpdateAsync(T entity, Guid id)
         {
             entity.Id = id;
             var verify = await GetByIdAsync(entity.Id);
@@ -44,7 +45,7 @@ namespace biblioteca_AspNetWebApi.Repository
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             var entity = await GetByIdAsync(id);
             if(entity is null) return false;

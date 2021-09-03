@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using biblioteca_AspNetWebApi.Models;
@@ -36,7 +37,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody] ClerkViewModel clerkViewModel, [FromRoute]int id)
+        public async Task<IActionResult> Update([FromBody] ClerkViewModel clerkViewModel, [FromRoute]Guid id)
         {
             if(!ModelState.IsValid) return BadRequest("aiaiai");
 
@@ -48,7 +49,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpDelete("Deletar/{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             if(!ModelState.IsValid) return BadRequest();
 

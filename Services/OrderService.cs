@@ -21,7 +21,7 @@ namespace biblioteca_AspNetWebApi.Services
             _punishmentRepository = punishmentRepository;
         }
 
-        public async Task<Order> GetByIdAsync(int id)
+        public async Task<Order> GetByIdAsync(Guid id)
         {
             return await _orderRepository.GetByIdAsync(id);
         }
@@ -31,22 +31,22 @@ namespace biblioteca_AspNetWebApi.Services
             return await _orderRepository.CreateAsync(order);
         }
 
-        public async Task<bool> UpdateAsync(Order order, int id)
+        public async Task<bool> UpdateAsync(Order order, Guid id)
         {
             return await _orderRepository.UpdateAsync(order, id);
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             return await _orderRepository.DeleteAsync(id);
         }
 
-        public IEnumerable<Order> GetAllByIdClient(int id)
+        public IEnumerable<Order> GetAllByIdClient(Guid id)
         {
             return _orderRepository.GetAllByIdClient(id);
         }
 
-        public bool FitClient(int id)
+        public bool FitClient(Guid id)
         {
             var punishments =  _punishmentRepository.GetAllByClientId(id);
             var orders = _orderRepository.GetAllByIdClient(id);

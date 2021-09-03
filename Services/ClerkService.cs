@@ -22,14 +22,14 @@ namespace biblioteca_AspNetWebApi.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync(Clerk clerk, int id)
+        public async Task<bool> UpdateAsync(Clerk clerk, Guid id)
         {
             if(await _clerkRepository.UpdateAsync(clerk, id)) return true;
 
             return false;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             if(await _clerkRepository.DeleteAsync(id)) return true;
 

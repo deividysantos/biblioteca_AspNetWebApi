@@ -4,8 +4,8 @@ namespace biblioteca_AspNetWebApi.Models.ViewModels
 {
     public class PunishmentViewModel
     {
-        public int IdClient { get; set; }
-        public int IdPedido { get; set; }
+        public Guid IdClient { get; set; }
+        public Guid IdPedido { get; set; }
         public DateTime InitialDate { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using biblioteca_AspNetWebApi.Data;
 namespace biblioteca_AspNetWebApi.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20210831200433_initial")]
-    partial class initial
+    [Migration("20210903223101_Guid")]
+    partial class Guid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,9 @@ namespace biblioteca_AspNetWebApi.Migrations
 
             modelBuilder.Entity("biblioteca_AspNetWebApi.Models.Book", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AgeGroup")
                         .HasColumnType("int");
@@ -50,10 +49,9 @@ namespace biblioteca_AspNetWebApi.Migrations
 
             modelBuilder.Entity("biblioteca_AspNetWebApi.Models.Clerk", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -71,10 +69,9 @@ namespace biblioteca_AspNetWebApi.Migrations
 
             modelBuilder.Entity("biblioteca_AspNetWebApi.Models.Client", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("datetime2");
@@ -98,22 +95,21 @@ namespace biblioteca_AspNetWebApi.Migrations
 
             modelBuilder.Entity("biblioteca_AspNetWebApi.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdBook")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdBook")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("IdClerk")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdClerk")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("IdClient")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdClient")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
@@ -125,16 +121,15 @@ namespace biblioteca_AspNetWebApi.Migrations
 
             modelBuilder.Entity("biblioteca_AspNetWebApi.Models.Punishment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("IdClient")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdClient")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("IdPedido")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdPedido")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("InitialDate")
                         .HasColumnType("datetime2");

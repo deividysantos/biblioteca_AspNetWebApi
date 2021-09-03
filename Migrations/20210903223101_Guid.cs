@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace biblioteca_AspNetWebApi.Migrations
 {
-    public partial class initial : Migration
+    public partial class Guid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,7 @@ namespace biblioteca_AspNetWebApi.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edition = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -28,8 +27,7 @@ namespace biblioteca_AspNetWebApi.Migrations
                 name: "Clerks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -43,8 +41,7 @@ namespace biblioteca_AspNetWebApi.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -60,11 +57,10 @@ namespace biblioteca_AspNetWebApi.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdClient = table.Column<int>(type: "int", nullable: false),
-                    IdClerk = table.Column<int>(type: "int", nullable: false),
-                    IdBook = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdClient = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdClerk = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdBook = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RequestDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -77,10 +73,9 @@ namespace biblioteca_AspNetWebApi.Migrations
                 name: "Punishments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdClient = table.Column<int>(type: "int", nullable: false),
-                    IdPedido = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdClient = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdPedido = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     InitialDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

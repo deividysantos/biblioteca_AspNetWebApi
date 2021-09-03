@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -22,7 +23,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetByOrderId([FromRoute]int id)
+        public IActionResult GetByOrderId([FromRoute]Guid id)
         {
             var entity = _orderService.GetByIdAsync(id);
             if(entity is null) return NotFound();
@@ -31,7 +32,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpGet("Client/{id}")]
-        public IActionResult GetAllByIdClient([FromRoute]int id)
+        public IActionResult GetAllByIdClient([FromRoute]Guid id)
         {
             IEnumerable<Order> entities = _orderService.GetAllByIdClient(id);
 
@@ -56,7 +57,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody]OrderViewModel orderViewModel, [FromRoute]int id)
+        public async Task<IActionResult> Update([FromBody]OrderViewModel orderViewModel, [FromRoute]Guid id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
@@ -68,7 +69,7 @@ namespace biblioteca_AspNetWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute]int id)
+        public async Task<IActionResult> Delete([FromRoute]Guid id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
