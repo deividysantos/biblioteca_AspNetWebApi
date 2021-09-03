@@ -35,6 +35,7 @@ namespace biblioteca_AspNetWebApi.Repository
 
         public async Task<bool> UpdateAsync(T entity, int id)
         {
+            entity.Id = id;
             var verify = await GetByIdAsync(entity.Id);
 
             if(verify is null) return false;
