@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace biblioteca_AspNetWebApi.Repository
+namespace biblioteca_AspNetWebApi.Repository.RepositoryInterfaces
 {
     public interface IBaseRepository<T>
     {

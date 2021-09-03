@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Data;
 using biblioteca_AspNetWebApi.Models;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace biblioteca_AspNetWebApi.Repository
 {
-    public class ClientRepository : BaseRepository<Client>
+    public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
         public ClientRepository(BibliotecaContext context) : base(context)
         {

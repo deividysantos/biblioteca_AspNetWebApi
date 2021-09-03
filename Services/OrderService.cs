@@ -2,17 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Models;
-using biblioteca_AspNetWebApi.Repository;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 
 namespace biblioteca_AspNetWebApi.Services
 {
     public class OrderService
     {
-        private readonly OrderRepository _orderRepository;
-        private readonly ClientRepository _clientRepository;
-        private readonly PunishmentRepository _punishmentRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IClientRepository _clientRepository;
+        private readonly IPunishmentRepository _punishmentRepository;
 
-        public OrderService(OrderRepository orderRepository, ClientRepository clientRepository, PunishmentRepository punishmentRepository)
+        public OrderService(IOrderRepository orderRepository, 
+                            IClientRepository clientRepository, 
+                            IPunishmentRepository punishmentRepository)
         {
             _orderRepository = orderRepository;
             _clientRepository = clientRepository;

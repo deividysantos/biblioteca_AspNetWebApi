@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Data;
 using biblioteca_AspNetWebApi.Models;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace biblioteca_AspNetWebApi.Repository

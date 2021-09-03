@@ -1,15 +1,15 @@
 using System;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Models;
-using biblioteca_AspNetWebApi.Repository;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 
 namespace biblioteca_AspNetWebApi.Services
 {
     public class ClientService
     {
-        private ClientRepository _clientRepository;
+        private readonly IClientRepository _clientRepository;
 
-        public ClientService(ClientRepository clientRepository)
+        public ClientService(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
         }

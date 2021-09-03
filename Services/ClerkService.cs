@@ -1,5 +1,6 @@
 using biblioteca_AspNetWebApi.Models;
-using biblioteca_AspNetWebApi.Repository;
+
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 using System;
 using System.Threading.Tasks;
 
@@ -7,9 +8,9 @@ namespace biblioteca_AspNetWebApi.Services
 {
     public class ClerkService
     {
-        private readonly ClerkRepository _clerkRepository;
+        private readonly IClerkRepository _clerkRepository;
 
-        public ClerkService(ClerkRepository clerkRepository)
+        public ClerkService(IClerkRepository clerkRepository)
         {
             _clerkRepository = clerkRepository;
         }

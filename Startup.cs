@@ -10,6 +10,7 @@ using biblioteca_AspNetWebApi.Data;
 using Microsoft.EntityFrameworkCore;
 using biblioteca_AspNetWebApi.Services;
 using biblioteca_AspNetWebApi.Repository;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 
 namespace biblioteca_AspNetWebApi
 {
@@ -45,11 +46,11 @@ namespace biblioteca_AspNetWebApi
             options.UseSqlServer(Configuration.GetConnectionString("biblioteca")));
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<BookRepository>();
-            services.AddScoped<ClerkRepository>();
-            services.AddScoped<ClientRepository>();
-            services.AddScoped<OrderRepository>();
-            services.AddScoped<PunishmentRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IClerkRepository, ClerkRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPunishmentRepository, PunishmentRepository>();
 
             services.AddTransient<BookService>();
             services.AddTransient<ClerkService>();

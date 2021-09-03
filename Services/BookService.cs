@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Models;
 using biblioteca_AspNetWebApi.Models.ViewModels;
-using biblioteca_AspNetWebApi.Repository;
+using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 
 namespace biblioteca_AspNetWebApi.Services
 {
     public class BookService
     {
-        private readonly BookRepository _bookrepository;
+        private readonly IBookRepository _bookrepository;
 
-        public BookService(BookRepository bookrepository)
+        public BookService(IBookRepository bookrepository)
         {
             _bookrepository = bookrepository;
         }
