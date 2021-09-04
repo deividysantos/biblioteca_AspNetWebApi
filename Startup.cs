@@ -52,6 +52,7 @@ namespace biblioteca_AspNetWebApi
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IPunishmentRepository, PunishmentRepository>();
 
+            //to do: arrumar a injeção de dependência
             services.AddTransient<BookService>();
             services.AddTransient<ClerkService>();
             services.AddTransient<ClientService>();
