@@ -53,5 +53,15 @@ namespace biblioteca_AspNetWebApi.Repository
             _context.Set<T>().Remove(entity);
             return await _context.SaveChangesAsync() == 1;
         }
+
+        public async Task<bool> Inactivate (Guid id) 
+        {
+            var entity = await GetByIdAsync(id);
+
+            entity.IsInactivated = true;
+
+            _context.Update(entity);
+            return _context.SaveChanges() == 1;
+        }
     }
 }

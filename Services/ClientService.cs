@@ -37,7 +37,7 @@ namespace biblioteca_AspNetWebApi.Services
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            if(await _clientRepository.DeleteAsync(id)) return true;
+            if(await _clientRepository.Inactivate(id)) return true;
 
             return false;
         }
@@ -49,6 +49,11 @@ namespace biblioteca_AspNetWebApi.Services
             if(client is null) return false;
 
             return true;
+        }
+
+        public async Task<bool> Inactivate(Guid id)
+        {
+            return await _clientRepository.Inactivate(id);
         }
     }
 }

@@ -39,5 +39,11 @@ namespace biblioteca_AspNetWebApi.Services
         {
             return await _bookrepository.DeleteAsync(id);
         }
+        
+        public async Task<bool> Inactivate(Guid id)
+        {
+            return await _bookrepository.Inactivate(id);
+        }
+        
     }
 }

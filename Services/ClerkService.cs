@@ -44,5 +44,10 @@ namespace biblioteca_AspNetWebApi.Services
 
             return true;
         }
+
+        public async Task<bool> Inactivate(Guid id)
+        {
+            return await _clerkRepository.Inactivate(id);
+        }
     }
 }

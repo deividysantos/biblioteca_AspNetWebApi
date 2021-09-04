@@ -16,7 +16,8 @@ namespace biblioteca_AspNetWebApi.Migrations
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edition = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AvailableQuantity = table.Column<int>(type: "int", nullable: false),
-                    AgeGroup = table.Column<int>(type: "int", nullable: false)
+                    AgeGroup = table.Column<int>(type: "int", nullable: false),
+                    IsInactivated = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +31,8 @@ namespace biblioteca_AspNetWebApi.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsInactivated = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +64,8 @@ namespace biblioteca_AspNetWebApi.Migrations
                     IdClerk = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdBook = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RequestDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsInactivated = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,7 +79,8 @@ namespace biblioteca_AspNetWebApi.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdClient = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdPedido = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    InitialDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    InitialDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsInactivated = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

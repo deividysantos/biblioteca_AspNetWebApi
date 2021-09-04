@@ -70,5 +70,10 @@ namespace biblioteca_AspNetWebApi.Services
 
             return false;
         }
+
+        public async Task<bool> Inactivate(Guid id)
+        {
+            return await _orderRepository.Inactivate(id);
+        }
     }
 }

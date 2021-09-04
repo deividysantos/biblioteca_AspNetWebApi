@@ -48,6 +48,16 @@ namespace biblioteca_AspNetWebApi.Controllers
             return BadRequest("aaaa");
         }
 
+        [HttpPost("Inativar/{id}")]
+        public async Task<IActionResult> Inativate([FromRoute]Guid id)
+        {
+            if(!ModelState.IsValid) return BadRequest();
+
+            if(await _clerkService.Inactivate(id)) return Ok();
+
+            return BadRequest();
+        }
+
         [HttpDelete("Deletar/{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {

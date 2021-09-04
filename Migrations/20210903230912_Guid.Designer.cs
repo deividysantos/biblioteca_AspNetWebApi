@@ -10,7 +10,7 @@ using biblioteca_AspNetWebApi.Data;
 namespace biblioteca_AspNetWebApi.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20210903223101_Guid")]
+    [Migration("20210903230912_Guid")]
     partial class Guid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,9 @@ namespace biblioteca_AspNetWebApi.Migrations
                     b.Property<string>("Edition")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsInactivated")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -55,6 +58,9 @@ namespace biblioteca_AspNetWebApi.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsInactivated")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -111,6 +117,9 @@ namespace biblioteca_AspNetWebApi.Migrations
                     b.Property<Guid>("IdClient")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsInactivated")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
@@ -133,6 +142,9 @@ namespace biblioteca_AspNetWebApi.Migrations
 
                     b.Property<DateTime>("InitialDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsInactivated")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

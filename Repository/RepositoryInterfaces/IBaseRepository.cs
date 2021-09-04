@@ -11,5 +11,6 @@ namespace biblioteca_AspNetWebApi.Repository.RepositoryInterfaces
         Task<bool> CreateAsync(T entity);
         Task<bool> UpdateAsync(T entity, Guid id);
         Task<bool> DeleteAsync(Guid id);
+        Task<bool> Inactivate (Guid id);
     }
 }
