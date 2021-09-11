@@ -21,6 +21,13 @@ namespace biblioteca_AspNetWebApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("Login")]
+        public async Task<IActionResult> Login([FromBody]LoginViewModel loginViewModel)
+        {
+            
+        }
+
+
         [HttpPost("Cadastrar")]
         public async Task<IActionResult> Create([FromBody]ClientViewModel clientViewModel)
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/deividy/Documentos/Mentoria/1/csharp/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj": {}
+    "/home/deividy/github/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj": {}
   },
   "projects": {
-    "/home/deividy/Documentos/Mentoria/1/csharp/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj": {
+    "/home/deividy/github/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/deividy/Documentos/Mentoria/1/csharp/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj",
+        "projectUniqueName": "/home/deividy/github/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj",
         "projectName": "biblioteca_AspNetWebApi",
-        "projectPath": "/home/deividy/Documentos/Mentoria/1/csharp/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj",
+        "projectPath": "/home/deividy/github/biblioteca_AspNetWebApi/biblioteca_AspNetWebApi.csproj",
         "packagesPath": "/home/deividy/.nuget/packages/",
-        "outputPath": "/home/deividy/Documentos/Mentoria/1/csharp/biblioteca_AspNetWebApi/obj/",
+        "outputPath": "/home/deividy/github/biblioteca_AspNetWebApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/deividy/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.9, )"
