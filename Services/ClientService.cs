@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using biblioteca_AspNetWebApi.Models;
+using biblioteca_AspNetWebApi.Models.ViewModels;
 using biblioteca_AspNetWebApi.Repository.RepositoryInterfaces;
 
 namespace biblioteca_AspNetWebApi.Services
@@ -14,7 +15,7 @@ namespace biblioteca_AspNetWebApi.Services
             _clientRepository = clientRepository;
         }
 
-        public async Task<Client> GetById(Guid id)
+        public async Task<Client> GetByIdAsync(Guid id)
         {
             var client = await _clientRepository.GetByIdAsync(id);
 
@@ -55,5 +56,17 @@ namespace biblioteca_AspNetWebApi.Services
         {
             return await _clientRepository.Inactivate(id);
         }
+
+        public async Task<dynamic> ValidateRegistration(ClientSigInViewModel clientViewModel)
+        {
+            if(clientViewModel.Password != clientViewModel.ConfirmPassword)
+                return new Response("False","As senhas precisam ser iguais!");
+
+            if(await ExistingEmailAsync(clientViewModel.Email))
+                return new Response("False", "Email já cadastrado!");
+
+            return true;
+        }
+
     }
 }

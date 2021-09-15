@@ -21,36 +21,42 @@ namespace biblioteca_AspNetWebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("Login")]
-        public async Task<IActionResult> Login([FromBody]LoginViewModel loginViewModel)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Client>> GetById([FromRoute]Guid id)
         {
-            
+            var client = await _clientService.GetByIdAsync(id);
+            if(client is null)
+                return NotFound(new Response("false","Client não encontrado"));
+
+            return Ok(client);
         }
 
-
         [HttpPost("Cadastrar")]
-        public async Task<IActionResult> Create([FromBody]ClientViewModel clientViewModel)
+        public async Task<IActionResult> Create([FromBody]ClientSigInViewModel clientViewModel)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            if(await _clientService.ExistingEmailAsync(clientViewModel.Email))
-                return BadRequest("Email já cadastrado!");
+            var validateRegistration = await _clientService.ValidateRegistration(clientViewModel);
+
+            if(validateRegistration is Response)
+                return BadRequest(validateRegistration);
 
             Client client = _mapper.Map<Client>(clientViewModel);
             
             client.IsInactivated = false;
 
-            if(await _clientService.AddAsync(client)) return Ok();
+            if(await _clientService.AddAsync(client)) 
+                return Ok(new Response("true","registered successfully"));
             
-            return BadRequest();
+            return BadRequest(new Response("false","internal error"));
         }
 
         [HttpPut("Atualizar/{id}")]
-        public async Task<IActionResult> Update([FromBody]ClientViewModel clientViewModel, [FromRoute]Guid id)
+        public async Task<IActionResult> Update([FromBody]ClientSigInViewModel clientViewModel, [FromRoute]Guid id)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            var oldClient = await _clientService.GetById(id);
+            var oldClient = await _clientService.GetByIdAsync(id);
 
             if(oldClient.Email != clientViewModel.Email) 
             {
